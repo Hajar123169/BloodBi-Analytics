@@ -64,13 +64,13 @@ public class DashboardController {
                 Map.of("bloodType", "B-", "donors", 8),
                 Map.of("bloodType", "AB-", "donors", 4)
             ),
-            "cityDemand", List.of(
-                Map.of("city", "Casablanca", "requests", 42, "critical", 11),
-                Map.of("city", "Rabat", "requests", 24, "critical", 5),
-                Map.of("city", "Marrakech", "requests", 21, "critical", 7),
-                Map.of("city", "El Jadida", "requests", 16, "critical", 3),
-                Map.of("city", "Fes", "requests", 13, "critical", 2)
-            )
+          "cityDemand", List.of(
+                Map.of("city", "Casablanca", "pending", 28, "fulfilled", 14),
+                Map.of("city", "Rabat", "pending", 15, "fulfilled", 9),
+                Map.of("city", "Marrakech", "pending", 14, "fulfilled", 7),
+                Map.of("city", "El Jadida", "pending", 9, "fulfilled", 7),
+                Map.of("city", "Fes", "pending", 8, "fulfilled", 5)
+  )
         );
     }
 }

@@ -9,4 +9,5 @@ public class Enums {
     public enum UserRole { ADMIN, DONOR, PATIENT, CENTER_MANAGER }
     public enum AlertSeverity { LOW, MEDIUM, HIGH, CRITICAL }
     public enum DonationStatus { PLANNED, FULFILLED, CANCELLED }
+    public enum AppointmentStatus { PENDING,CONFIRMED,DONE,CANCELLED}
 }

@@ -11,8 +11,11 @@ const fallbackAnalytics = {
     { month: 'May', donations: 94, requests: 78 }, { month: 'Jun', donations: 108, requests: 89 }
   ],
   cityDemand: [
-    { city: 'Casablanca', requests: 42, critical: 11 }, { city: 'Rabat', requests: 24, critical: 5 },
-    { city: 'Marrakech', requests: 21, critical: 7 }, { city: 'El Jadida', requests: 16, critical: 3 }
+    { city: 'Casablanca', pending: 28, fulfilled: 14 },
+    { city: 'Rabat', pending: 15, fulfilled: 9 },
+    { city: 'Marrakech', pending: 14, fulfilled: 7 },
+    { city: 'El Jadida', pending: 9, fulfilled: 7 },
+    { city: 'Fes', pending: 8, fulfilled: 5 }
   ]
 };
 
@@ -40,25 +43,70 @@ export default function Dashboard() {
         <KpiCard label="Taux satisfaction" value={`${kpis.fulfillmentRate}%`} />
       </div>
       <div className="grid-2">
-        <div className="panel">
-          <h2>Évolution mensuelle dons / demandes</h2>
-          <ResponsiveContainer width="100%" height={280}>
-            <LineChart data={analytics.monthlyActivity}>
-              <CartesianGrid strokeDasharray="3 3" /><XAxis dataKey="month" /><YAxis /><Tooltip />
-              <Line type="monotone" dataKey="donations" strokeWidth={3} />
-              <Line type="monotone" dataKey="requests" strokeWidth={3} />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
-        <div className="panel">
-          <h2>Demandes par ville</h2>
-          <ResponsiveContainer width="100%" height={280}>
-            <BarChart data={analytics.cityDemand}>
-              <CartesianGrid strokeDasharray="3 3" /><XAxis dataKey="city" /><YAxis /><Tooltip />
-              <Bar dataKey="requests" /><Bar dataKey="critical" />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
+       {/* Graphique évolution mensuelle avec légende */}
+<div className="panel">
+  <h2>Évolution mensuelle dons / demandes</h2>
+  <ResponsiveContainer width="100%" height={280}>
+    <LineChart data={analytics.monthlyActivity}>
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="month" />
+      <YAxis />
+      <Tooltip />
+      {/* Ajout des couleurs spécifiques */}
+      <Line 
+        type="monotone" 
+        dataKey="donations" 
+        stroke="#ef4444"  /* Rouge pour les dons */
+        strokeWidth={3} 
+        dot={{ r: 4, fill: "#ef4444" }}
+      />
+      <Line 
+        type="monotone" 
+        dataKey="requests" 
+        stroke="#3b82f6"  /* Bleu pour les demandes */
+        strokeWidth={3} 
+        dot={{ r: 4, fill: "#3b82f6" }}
+      />
+    </LineChart>
+  </ResponsiveContainer>
+  {/* Légende en bas */}
+  <div style={{ display: 'flex', justifyContent: 'center', gap: '24px', marginTop: '16px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <div style={{ width: '20px', height: '3px', backgroundColor: '#ef4444', borderRadius: '2px' }}></div>
+      <span>Dons</span>
+    </div>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <div style={{ width: '20px', height: '3px', backgroundColor: '#3b82f6', borderRadius: '2px' }}></div>
+      <span>Demandes</span>
+    </div>
+  </div>
+</div> 
+        {/* Graphique demandes par ville avec pending/fulfilled */}
+<div className="panel">
+  <h2>Demandes par ville</h2>
+  <ResponsiveContainer width="100%" height={280}>
+    <BarChart data={analytics.cityDemand}>
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="city" />
+      <YAxis />
+      <Tooltip />
+      {/* pending = rouge, fulfilled = vert */}
+      <Bar dataKey="pending" name="En attente" fill="#ef4444" radius={[4, 4, 0, 0]} />
+      <Bar dataKey="fulfilled" name="Satisfaites" fill="#22c55e" radius={[4, 4, 0, 0]} />
+    </BarChart>
+  </ResponsiveContainer>
+  {/* Légende en bas */}
+  <div style={{ display: 'flex', justifyContent: 'center', gap: '24px', marginTop: '16px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <div style={{ width: '20px', height: '20px', backgroundColor: '#ef4444', borderRadius: '4px' }}></div>
+      <span>En attente (pending)</span>
+    </div>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <div style={{ width: '20px', height: '20px', backgroundColor: '#22c55e', borderRadius: '4px' }}></div>
+      <span>Satisfaites (fulfilled)</span>
+    </div>
+  </div>
+</div>
       </div>
     </div>
   );
