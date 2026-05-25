@@ -155,7 +155,73 @@ public class AppointmentController {
             requests.save(request);
         }
 
-        return appointment;
+        return appointments.findById(id).orElse(appointment);
+    }
+
+    @PutMapping("/{id}")
+    public Appointment update(@PathVariable Long id, @RequestBody Appointment appointment) {
+        Appointment existing = appointments.findById(id).orElseThrow();
+        
+        // Mettre à jour le donneur
+        if (appointment.donor != null && appointment.donor.id != null) {
+            existing.donor = donors.findById(appointment.donor.id).orElse(existing.donor);
+        }
+        
+        // Mettre à jour la demande
+        if (appointment.request != null && appointment.request.id != null) {
+            existing.request = requests.findById(appointment.request.id).orElse(existing.request);
+        }
+        
+        // Mettre à jour le centre
+        if (appointment.center != null && appointment.center.id != null) {
+            existing.center = centers.findById(appointment.center.id).orElse(existing.center);
+        }
+        
+        // Mettre à jour la date et l'heure
+        if (appointment.scheduledAt != null) {
+            existing.scheduledAt = appointment.scheduledAt;
+        }
+        
+        // Mettre à jour le statut et les dates associées
+        if (appointment.status != null) {
+            AppointmentStatus oldStatus = existing.status;
+            existing.status = appointment.status;
+            
+            // Si le statut change vers CONFIRMED et que la date n'existe pas
+            if (appointment.status == AppointmentStatus.CONFIRMED && existing.confirmedAt == null) {
+                existing.confirmedAt = LocalDateTime.now();
+            }
+            
+            // Si le statut change vers CANCELLED et que la date n'existe pas
+            if (appointment.status == AppointmentStatus.CANCELLED && existing.cancelledAt == null) {
+                existing.cancelledAt = LocalDateTime.now();
+            }
+            
+            // Si le statut change vers DONE et que la date n'existe pas
+            if (appointment.status == AppointmentStatus.DONE && existing.completedAt == null) {
+                existing.completedAt = LocalDateTime.now();
+            }
+            
+            // Si on revient à PENDING, réinitialiser les dates de confirmation/annulation
+            if (appointment.status == AppointmentStatus.PENDING) {
+                existing.confirmedAt = null;
+                existing.cancelledAt = null;
+            }
+        }
+        
+        // Mettre à jour les notes
+        if (appointment.notes != null) {
+            existing.notes = appointment.notes;
+        }
+        
+        // Mettre à jour le téléphone de contact
+        if (appointment.contactPhone != null && !appointment.contactPhone.isBlank()) {
+            existing.contactPhone = appointment.contactPhone;
+        } else if (existing.donor != null && existing.donor.phone != null) {
+            existing.contactPhone = existing.donor.phone;
+        }
+        
+        return appointments.save(existing);
     }
 
     private void normalizeRelations(Appointment appointment) {

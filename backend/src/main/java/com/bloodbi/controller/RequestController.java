@@ -41,4 +41,12 @@ public class RequestController {
         r.status = RequestStatus.CANCELLED;
         return requests.save(r);
     }
+@DeleteMapping("/{id}")
+public void delete(@PathVariable Long id) { requests.deleteById(id); }
+
+@PutMapping("/{id}")
+public BloodRequest update(@PathVariable Long id, @RequestBody BloodRequest request) {
+    request.id = id;
+    return requests.save(request);
+}
 }

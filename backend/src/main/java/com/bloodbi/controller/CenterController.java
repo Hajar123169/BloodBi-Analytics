@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/centers")
 public class CenterController {
     private final BloodBankCenterRepository centers;
-    public CenterController(BloodBankCenterRepository centers) { this.centers = centers; }
+    
+    public CenterController(BloodBankCenterRepository centers) { 
+        this.centers = centers; 
+    }
 
     @GetMapping
     public List<BloodBankCenter> all(@RequestParam(required = false) String city) {
@@ -17,5 +20,18 @@ public class CenterController {
     }
 
     @PostMapping
-    public BloodBankCenter create(@RequestBody BloodBankCenter center) { return centers.save(center); }
+    public BloodBankCenter create(@RequestBody BloodBankCenter center) { 
+        return centers.save(center); 
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) { 
+        centers.deleteById(id); 
+    }
+
+    @PutMapping("/{id}")
+    public BloodBankCenter update(@PathVariable Long id, @RequestBody BloodBankCenter center) {
+        center.id = id;
+        return centers.save(center);
+    }
 }

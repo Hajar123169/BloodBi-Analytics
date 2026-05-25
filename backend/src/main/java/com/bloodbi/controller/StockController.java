@@ -36,4 +36,10 @@ public class StockController {
         stock.lastUpdated = LocalDateTime.now();
         return stocks.save(stock);
     }
+
+    // Ajout de la méthode DELETE
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        stocks.deleteById(id);
+    }
 }

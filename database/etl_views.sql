@@ -1,4 +1,4 @@
-USE bloodbi;
+USE bloodbi_v2;
 
 CREATE OR REPLACE VIEW view_requests_by_blood_type AS
 SELECT

@@ -1,13 +1,23 @@
 package com.bloodbi.model;
 
 import com.bloodbi.model.Enums.AppointmentStatus;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "appointments")
 public class Appointment {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
     @ManyToOne
