@@ -235,5 +235,20 @@ UNION SELECT 'donor_profiles', COUNT(*) FROM donor_profiles
 UNION SELECT 'blood_requests', COUNT(*) FROM blood_requests
 UNION SELECT 'donations', COUNT(*) FROM donations
 UNION SELECT 'blood_stocks', COUNT(*) FROM blood_stocks;
-
+INSERT INTO app_users (
+    username,
+    email,
+    password,
+    role,
+    active,
+    created_at
+)
+VALUES (
+    'HajarKhomssi',
+    'hjkh123@gmail.com',
+    '123456',
+    'PATIENT',
+    true,
+    NOW()
+);
 SET FOREIGN_KEY_CHECKS = 1;

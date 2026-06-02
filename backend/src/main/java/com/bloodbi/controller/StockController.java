@@ -37,9 +37,9 @@ public class StockController {
         return stocks.save(stock);
     }
 
-    // Ajout de la méthode DELETE
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
-        stocks.deleteById(id);
-    }
+   // Dans StockController.java, ajoutez cette méthode
+@DeleteMapping("/{id}")
+public void delete(@PathVariable Long id) {
+    stocks.deleteById(id);
+}
 }

@@ -1,3 +1,4 @@
+//Ce dossier contient la configuration des appels vers le backend.
 import axios from 'axios';
 
 const api = axios.create({

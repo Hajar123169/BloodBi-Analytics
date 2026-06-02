@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
-
+//organise la structure générale de l’application.
 export default function Layout({ user, onLogout }) {
   return (
     <div className="app-shell">

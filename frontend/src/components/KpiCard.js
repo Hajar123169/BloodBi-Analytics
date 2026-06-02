@@ -1,3 +1,4 @@
+//Ce dossier contient les composants réutilisables.
 import React from 'react';
 
 export default function KpiCard({ label, value, hint }) {
