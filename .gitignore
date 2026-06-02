@@ -152,3 +152,8 @@ mobile-app/node_modules/
 
 # Logs
 *.log
+.expo/
+frontend/.expo/
+mobile-app/.expo/
+node_modules/
+target/
