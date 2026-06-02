@@ -3,7 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
-
+import Predictions from './components/Predictions';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import DonorStats from './pages/DonorStats';
@@ -74,6 +74,7 @@ export default function App() {
           <Route path="reports" element={<Reports />} />
           <Route path="centers" element={<Centers />} />
            <Route path="matcher" element={<DonorMatcher />} />
+            <Route path="predictions" element={<Predictions />} />
         </Route>
 
         <Route
@@ -89,4 +90,4 @@ export default function App() {
       </Routes>
     </BrowserRouter>
   );
-}
+  }

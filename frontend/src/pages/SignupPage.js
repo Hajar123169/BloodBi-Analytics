@@ -52,7 +52,7 @@ export default function SignupPage() {
       }, 1200);
     } catch (err) {
       console.error(err);
-      setError("Erreur lors de la création du compte. Vérifiez l'API backend.");
+      setError("HEY,Erreur lors de la création du compte. Vérifiez l'API backend.");
     }
   };
 

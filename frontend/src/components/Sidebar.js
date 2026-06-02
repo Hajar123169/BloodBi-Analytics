@@ -21,7 +21,8 @@ const items = [
   { to: '/stock', label: 'Blood Stock', icon: <InventoryIcon /> },
   { to: '/alerts', label: 'Alerts', icon: <WarningIcon /> },
   { to: '/reports', label: 'Reports', icon: <AssessmentIcon /> },
-  { to: '/centers', label: 'Centers', icon: <LocalHospitalIcon /> }
+  { to: '/centers', label: 'Centers', icon: <LocalHospitalIcon /> },
+  { to: '/predictions', label: 'Prédictions IA', icon: <AssessmentIcon /> }
 ];
 
 export default function Sidebar({ onLogout }) {

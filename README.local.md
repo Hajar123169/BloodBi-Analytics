@@ -93,7 +93,7 @@ npx expo start
 Si vous testez sur un téléphone physique, remplacez `localhost` par l'adresse IP locale de votre PC :
 
 ```bash
-EXPO_PUBLIC_API_URL=http://192.168.1.10:8081/api npx expo start
+EXPO_PUBLIC_API_URL=http://192.168.1.10:8082/api npx expo start
 ```
 
 ## Fonctionnalités web
