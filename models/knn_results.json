@@ -1,0 +1,203 @@
+{
+  "model": "KNN Donor Prediction",
+  "version": "1.0.0",
+  "k_neighbors": 7,
+  "features": [
+    "recency_months",
+    "frequency",
+    "volume_ml",
+    "time_since_first",
+    "nb_donations_last_year",
+    "blood_type_encoded"
+  ],
+  "accuracy": 0.8562,
+  "auc_roc": 0.9319,
+  "cv_mean": 0.825,
+  "cv_std": 0.0219,
+  "cv_scores": [
+    0.8516,
+    0.8203,
+    0.7891,
+    0.8438,
+    0.8203
+  ],
+  "classification_report": {
+    "0": {
+      "precision": 0.9026548672566371,
+      "recall": 0.8947368421052632,
+      "f1-score": 0.8986784140969163,
+      "support": 114.0
+    },
+    "1": {
+      "precision": 0.7446808510638298,
+      "recall": 0.7608695652173914,
+      "f1-score": 0.7526881720430108,
+      "support": 46.0
+    },
+    "accuracy": 0.85625,
+    "macro avg": {
+      "precision": 0.8236678591602334,
+      "recall": 0.8278032036613272,
+      "f1-score": 0.8256832930699636,
+      "support": 160.0
+    },
+    "weighted avg": {
+      "precision": 0.8572373376012049,
+      "recall": 0.85625,
+      "f1-score": 0.8567062195064186,
+      "support": 160.0
+    }
+  },
+  "class_distribution": {
+    "will_donate": 231,
+    "wont_donate": 569
+  },
+  "high_risk_donors": [
+    {
+      "donor_id": 0,
+      "recency_months": 2,
+      "frequency": 1,
+      "blood_type_encoded": 3,
+      "churn_risk": 1.0
+    },
+    {
+      "donor_id": 1,
+      "recency_months": 19,
+      "frequency": 15,
+      "blood_type_encoded": 7,
+      "churn_risk": 1.0
+    },
+    {
+      "donor_id": 2,
+      "recency_months": 16,
+      "frequency": 26,
+      "blood_type_encoded": 1,
+      "churn_risk": 1.0
+    },
+    {
+      "donor_id": 3,
+      "recency_months": 10,
+      "frequency": 46,
+      "blood_type_encoded": 4,
+      "churn_risk": 1.0
+    },
+    {
+      "donor_id": 4,
+      "recency_months": 10,
+      "frequency": 37,
+      "blood_type_encoded": 7,
+      "churn_risk": 1.0
+    },
+    {
+      "donor_id": 5,
+      "recency_months": 21,
+      "frequency": 39,
+      "blood_type_encoded": 8,
+      "churn_risk": 1.0
+    },
+    {
+      "donor_id": 7,
+      "recency_months": 17,
+      "frequency": 6,
+      "blood_type_encoded": 6,
+      "churn_risk": 1.0
+    },
+    {
+      "donor_id": 10,
+      "recency_months": 13,
+      "frequency": 3,
+      "blood_type_encoded": 3,
+      "churn_risk": 1.0
+    },
+    {
+      "donor_id": 11,
+      "recency_months": 24,
+      "frequency": 44,
+      "blood_type_encoded": 8,
+      "churn_risk": 1.0
+    },
+    {
+      "donor_id": 12,
+      "recency_months": 18,
+      "frequency": 34,
+      "blood_type_encoded": 6,
+      "churn_risk": 1.0
+    },
+    {
+      "donor_id": 13,
+      "recency_months": 19,
+      "frequency": 14,
+      "blood_type_encoded": 4,
+      "churn_risk": 1.0
+    },
+    {
+      "donor_id": 14,
+      "recency_months": 17,
+      "frequency": 39,
+      "blood_type_encoded": 3,
+      "churn_risk": 1.0
+    },
+    {
+      "donor_id": 15,
+      "recency_months": 19,
+      "frequency": 42,
+      "blood_type_encoded": 2,
+      "churn_risk": 1.0
+    },
+    {
+      "donor_id": 18,
+      "recency_months": 20,
+      "frequency": 33,
+      "blood_type_encoded": 2,
+      "churn_risk": 1.0
+    },
+    {
+      "donor_id": 19,
+      "recency_months": 11,
+      "frequency": 49,
+      "blood_type_encoded": 6,
+      "churn_risk": 1.0
+    },
+    {
+      "donor_id": 20,
+      "recency_months": 12,
+      "frequency": 2,
+      "blood_type_encoded": 2,
+      "churn_risk": 1.0
+    },
+    {
+      "donor_id": 22,
+      "recency_months": 4,
+      "frequency": 7,
+      "blood_type_encoded": 5,
+      "churn_risk": 1.0
+    },
+    {
+      "donor_id": 23,
+      "recency_months": 23,
+      "frequency": 32,
+      "blood_type_encoded": 3,
+      "churn_risk": 1.0
+    },
+    {
+      "donor_id": 24,
+      "recency_months": 19,
+      "frequency": 31,
+      "blood_type_encoded": 4,
+      "churn_risk": 1.0
+    },
+    {
+      "donor_id": 25,
+      "recency_months": 16,
+      "frequency": 5,
+      "blood_type_encoded": 2,
+      "churn_risk": 1.0
+    }
+  ],
+  "graphs": {
+    "confusion_matrix": "models/graphs/knn_confusion_matrix.png",
+    "roc_curve": "models/graphs/knn_roc_curve.png",
+    "feature_importance": "models/graphs/knn_feature_importance.png",
+    "cv_scores": "models/graphs/knn_cv_scores.png"
+  }
+}

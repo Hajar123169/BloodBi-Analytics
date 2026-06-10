@@ -157,3 +157,15 @@ frontend/.expo/
 mobile-app/.expo/
 node_modules/
 target/
+# Environment files
+.env
+*.env
+backend/.env
+frontend/.env
+mobile-app/.env
+
+# Keep env examples
+!.env.example
+!backend/.env.example
+!frontend/.env.example
+!mobile-app/.env.example

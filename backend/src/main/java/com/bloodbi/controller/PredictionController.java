@@ -1,5 +1,5 @@
 package com.bloodbi.controller;
- 
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -21,223 +21,425 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
- 
+
 /**
  * BloodBI Analytics — AI Prediction REST Controller
  *
- * Exposes four endpoints that serve results pre-computed by the Python
- * KNN and Linear-Regression pipelines.
- *
- * All endpoints are under /api/predictions and return JSON.
- * The models directory is resolved relative to the working directory
- * (project root) so both "mvn spring-boot:run" and a packaged JAR work.
+ * Exposes endpoints that serve results pre-computed by the Python
+ * KNN and Linear Regression pipelines.
  *
  * Endpoints:
- *   GET /api/predictions/demand          → 30-day blood demand forecast
- *   GET /api/predictions/donor-behavior  → KNN donor churn model metrics
- *   GET /api/predictions/high-risk       → Top 20 donors likely to churn
- *   GET /api/predictions/zone-risk       → Risk level per blood type
- *   GET /api/predictions/graph/{name}    → Serve a pre-generated PNG chart
+ *   GET /api/predictions/demand
+ *   GET /api/predictions/donor-behavior
+ *   GET /api/predictions/high-risk
+ *   GET /api/predictions/zone-risk
+ *   GET /api/predictions/graph/{name}
+ *   GET /api/predictions/status
  */
 @RestController
 @RequestMapping("/api/predictions")
-@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
+@CrossOrigin(origins = {
+        "http://localhost:3000",
+        "http://localhost:3001"
+})
 public class PredictionController {
- 
-   private static final String MODELS_DIR =
-        "C:/Users/emans/OneDrive/Desktop/bloodbi_app/models";
-    private final ObjectMapper  mapper     = new ObjectMapper();
- 
-    // ─── Helpers ──────────────────────────────────────────────────────────────
- 
+
+    private final ObjectMapper mapper = new ObjectMapper();
+
+    /**
+     * Dynamic path to the models folder.
+     *
+     * If backend is launched from:
+     *   bloodbi-analytics/backend
+     *
+     * This method returns:
+     *   bloodbi-analytics/models
+     */
+    private Path getModelsDir() {
+        Path backendDir =
+                Paths.get(
+                        System.getProperty("user.dir")
+                );
+
+        return backendDir
+                .getParent()
+                .resolve("models")
+                .toAbsolutePath()
+                .normalize();
+    }
+
     /**
      * Loads a JSON result file from the models directory.
-     * Returns a descriptive error map if the file is missing or unreadable.
      */
-    private Map<String, Object> loadJson(String filename) {
-        Path path = Paths.get(MODELS_DIR, filename);
+    private Map<String, Object> loadJson(
+            String filename
+    ) {
+
+        Path path =
+                getModelsDir()
+                        .resolve(filename);
+
         if (!Files.exists(path)) {
-            Map<String, Object> err = new LinkedHashMap<>();
-            err.put("error",   "Model results not found");
-            err.put("detail",  "Run the Python pipeline first: python backend/src/python/" + filename.replace(".json", ".py"));
-            err.put("missing", path.toAbsolutePath().toString());
+
+            Map<String, Object> err =
+                    new LinkedHashMap<>();
+
+            err.put(
+                    "error",
+                    "Model results not found"
+            );
+
+            err.put(
+                    "detail",
+                    "Run the Python pipelines first from the project root: "
+                            + "python backend/src/python/knn_donor_prediction.py "
+                            + "and python backend/src/python/linear_regression_demand.py"
+            );
+
+            err.put(
+                    "missing",
+                    path.toString()
+            );
+
+            err.put(
+                    "models_dir",
+                    getModelsDir().toString()
+            );
+
             return err;
         }
+
         try {
-            JsonNode node = mapper.readTree(path.toFile());
-            return mapper.convertValue(node, Map.class);
+
+            JsonNode node =
+                    mapper.readTree(
+                            path.toFile()
+                    );
+
+            @SuppressWarnings("unchecked")
+            Map<String, Object> result =
+                    mapper.convertValue(
+                            node,
+                            Map.class
+                    );
+
+            return result;
+
         } catch (IOException e) {
-            Map<String, Object> err = new LinkedHashMap<>();
-            err.put("error",  "Failed to parse results JSON");
-            err.put("detail", e.getMessage());
+
+            Map<String, Object> err =
+                    new LinkedHashMap<>();
+
+            err.put(
+                    "error",
+                    "Failed to parse results JSON"
+            );
+
+            err.put(
+                    "detail",
+                    e.getMessage()
+            );
+
+            err.put(
+                    "file",
+                    path.toString()
+            );
+
             return err;
         }
     }
- 
-    // ─── 1. Blood Demand Forecast ─────────────────────────────────────────────
- 
+
     /**
-     * Returns the full Linear-Regression demand forecast payload.
+     * GET /api/predictions/demand
      *
-     * Response shape (subset):
-     * {
-     *   "metrics":           { rmse, mae, r2, cv_mean, cv_std },
-     *   "daily_forecasts":   [ { date, blood_type, predicted_requests,
-     *                            confidence_lower, confidence_upper } … ],
-     *   "weekly_forecasts":  [ { date, blood_type, predicted_requests } … ],
-     *   "zone_risk":         [ { blood_type, avg_daily_need, risk } … ]
-     * }
+     * Returns the full Linear Regression demand forecast payload.
      */
     @GetMapping("/demand")
     public ResponseEntity<Map<String, Object>> getDemandForecast() {
-        Map<String, Object> data = loadJson("lr_results.json");
+
+        Map<String, Object> data =
+                loadJson("lr_results.json");
+
         return ResponseEntity.ok(data);
     }
- 
-    // ─── 2. Donor Behavior Model Metrics ──────────────────────────────────────
- 
+
     /**
-     * Returns KNN model metrics (accuracy, AUC-ROC, CV scores,
-     * classification report, class distribution).
-     * Strips the potentially-large high_risk_donors list for this endpoint
-     * — use /high-risk for that.
+     * GET /api/predictions/donor-behavior
+     *
+     * Returns KNN model metrics.
      */
     @GetMapping("/donor-behavior")
     public ResponseEntity<Map<String, Object>> getDonorBehavior() {
-        Map<String, Object> full = loadJson("knn_results.json");
+
+        Map<String, Object> full =
+                loadJson("knn_results.json");
+
         if (full.containsKey("error")) {
             return ResponseEntity.ok(full);
         }
-        // Return everything except the full donor list (separate endpoint)
-        Map<String, Object> summary = new LinkedHashMap<>(full);
+
+        Map<String, Object> summary =
+                new LinkedHashMap<>(full);
+
         summary.remove("high_risk_donors");
+
         return ResponseEntity.ok(summary);
     }
- 
-    // ─── 3. High-Risk Donors ──────────────────────────────────────────────────
- 
+
     /**
-     * Returns the top-N donors most at risk of not donating again.
-     * Supports optional ?limit=N query parameter (default 20, max 50).
+     * GET /api/predictions/high-risk?limit=20
      *
-     * Response shape:
-     * {
-     *   "count": 20,
-     *   "high_risk_donors": [ { donor_id, recency_months, frequency,
-     *                           blood_type_encoded, churn_risk } … ]
-     * }
+     * Returns top high-risk donors.
      */
     @GetMapping("/high-risk")
     public ResponseEntity<Map<String, Object>> getHighRiskDonors(
-            @RequestParam(defaultValue = "20") int limit) {
- 
-        Map<String, Object> full = loadJson("knn_results.json");
+            @RequestParam(defaultValue = "20") int limit
+    ) {
+
+        Map<String, Object> full =
+                loadJson("knn_results.json");
+
         if (full.containsKey("error")) {
             return ResponseEntity.ok(full);
         }
- 
-        Object rawList = full.get("high_risk_donors");
-        List<Map<String, Object>> donors = new ArrayList<>();
-        if (rawList instanceof List) {
+
+        Object rawList =
+                full.get("high_risk_donors");
+
+        List<Map<String, Object>> donors =
+                new ArrayList<>();
+
+        if (rawList instanceof List<?>) {
+
             @SuppressWarnings("unchecked")
-            List<Map<String, Object>> casted = (List<Map<String, Object>>) rawList;
-            int cap = Math.min(Math.min(limit, 50), casted.size());
-            donors = casted.subList(0, cap);
+            List<Map<String, Object>> casted =
+                    (List<Map<String, Object>>) rawList;
+
+            int safeLimit =
+                    Math.max(
+                            1,
+                            Math.min(limit, 50)
+                    );
+
+            int cap =
+                    Math.min(
+                            safeLimit,
+                            casted.size()
+                    );
+
+            donors =
+                    casted.subList(
+                            0,
+                            cap
+                    );
         }
- 
-        Map<String, Object> response = new LinkedHashMap<>();
-        response.put("count",             donors.size());
-        response.put("model_accuracy",    full.get("accuracy"));
-        response.put("model_auc",         full.get("auc_roc"));
-        response.put("high_risk_donors",  donors);
+
+        Map<String, Object> response =
+                new LinkedHashMap<>();
+
+        response.put(
+                "count",
+                donors.size()
+        );
+
+        response.put(
+                "model_accuracy",
+                full.get("accuracy")
+        );
+
+        response.put(
+                "model_auc",
+                full.get("auc_roc")
+        );
+
+        response.put(
+                "high_risk_donors",
+                donors
+        );
+
         return ResponseEntity.ok(response);
     }
- 
-    // ─── 4. Zone / Blood-Type Risk ────────────────────────────────────────────
- 
+
     /**
-     * Returns the aggregated risk level per blood type from the LR forecast.
+     * GET /api/predictions/zone-risk
      *
-     * Response shape:
-     * {
-     *   "forecast_days": 30,
-     *   "zone_risk": [
-     *     { "blood_type": "O+", "avg_daily_need": 12.4, "risk": "HIGH" }, …
-     *   ]
-     * }
+     * Returns risk level per blood type.
      */
     @GetMapping("/zone-risk")
     public ResponseEntity<Map<String, Object>> getZoneRisk() {
-        Map<String, Object> full = loadJson("lr_results.json");
+
+        Map<String, Object> full =
+                loadJson("lr_results.json");
+
         if (full.containsKey("error")) {
             return ResponseEntity.ok(full);
         }
-        Map<String, Object> response = new LinkedHashMap<>();
-        response.put("forecast_days", full.get("forecast_days"));
-        response.put("zone_risk",     full.get("zone_risk"));
-        response.put("metrics",       full.get("metrics"));
+
+        Map<String, Object> response =
+                new LinkedHashMap<>();
+
+        response.put(
+                "forecast_days",
+                full.get("forecast_days")
+        );
+
+        response.put(
+                "zone_risk",
+                full.get("zone_risk")
+        );
+
+        response.put(
+                "metrics",
+                full.get("metrics")
+        );
+
         return ResponseEntity.ok(response);
     }
- 
-    // ─── 5. Graph Serving ─────────────────────────────────────────────────────
- 
+
     /**
-     * Serves a pre-generated PNG graph by name.
-     * Valid names: knn_confusion_matrix, knn_roc_curve,
-     *              knn_feature_importance, knn_cv_scores,
-     *              lr_actual_vs_predicted, lr_forecast_30d,
-     *              lr_residuals, lr_coefficients
+     * GET /api/predictions/graph/{name}
      *
-     * Example: GET /api/predictions/graph/knn_roc_curve
+     * Serves pre-generated PNG graphs.
+     *
+     * Examples:
+     *   /api/predictions/graph/knn_confusion_matrix
+     *   /api/predictions/graph/knn_roc_curve
+     *   /api/predictions/graph/knn_feature_importance
+     *   /api/predictions/graph/knn_cv_scores
+     *   /api/predictions/graph/lr_actual_vs_predicted
+     *   /api/predictions/graph/lr_forecast_30d
+     *   /api/predictions/graph/lr_residuals
+     *   /api/predictions/graph/lr_coefficients
      */
-    @GetMapping(value = "/graph/{name}", produces = MediaType.IMAGE_PNG_VALUE)
-    public ResponseEntity<byte[]> getGraph(@PathVariable String name) {
-        // Sanitise: allow only alphanumeric + underscore
+    @GetMapping(
+            value = "/graph/{name}",
+            produces = MediaType.IMAGE_PNG_VALUE
+    )
+    public ResponseEntity<byte[]> getGraph(
+            @PathVariable String name
+    ) {
+
         if (!name.matches("[a-zA-Z0-9_]+")) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity
+                    .badRequest()
+                    .build();
         }
-        Path path = Paths.get(MODELS_DIR, "graphs", name + ".png");
+
+        Path path =
+                getModelsDir()
+                        .resolve("graphs")
+                        .resolve(name + ".png");
+
         if (!Files.exists(path)) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity
+                    .notFound()
+                    .build();
         }
+
         try {
-            byte[] bytes = Files.readAllBytes(path);
-            return ResponseEntity.ok()
+
+            byte[] bytes =
+                    Files.readAllBytes(path);
+
+            return ResponseEntity
+                    .ok()
                     .contentType(MediaType.IMAGE_PNG)
                     .body(bytes);
+
         } catch (IOException e) {
-            return ResponseEntity.internalServerError().build();
+
+            return ResponseEntity
+                    .internalServerError()
+                    .build();
         }
     }
- 
-    // ─── 6. Health / Summary ──────────────────────────────────────────────────
- 
+
     /**
-     * Quick status endpoint — tells the frontend which models are ready.
+     * GET /api/predictions/status
+     *
+     * Checks which AI files are ready.
      */
     @GetMapping("/status")
     public ResponseEntity<Map<String, Object>> getStatus() {
-        Map<String, Object> status = new LinkedHashMap<>();
- 
-        boolean knnReady = Files.exists(Paths.get(MODELS_DIR, "knn_results.json"));
-        boolean lrReady  = Files.exists(Paths.get(MODELS_DIR, "lr_results.json"));
- 
-        status.put("knn_model_ready",      knnReady);
-        status.put("lr_model_ready",       lrReady);
-        status.put("all_models_ready",     knnReady && lrReady);
-        status.put("timestamp",            new Date().toString());
- 
+
+        Path modelsDir =
+                getModelsDir();
+
+        boolean knnReady =
+                Files.exists(
+                        modelsDir.resolve("knn_results.json")
+                );
+
+        boolean lrReady =
+                Files.exists(
+                        modelsDir.resolve("lr_results.json")
+                );
+
+        boolean graphsReady =
+                Files.exists(
+                        modelsDir.resolve("graphs")
+                );
+
+        Map<String, Object> status =
+                new LinkedHashMap<>();
+
+        status.put(
+                "models_dir",
+                modelsDir.toString()
+        );
+
+        status.put(
+                "knn_model_ready",
+                knnReady
+        );
+
+        status.put(
+                "lr_model_ready",
+                lrReady
+        );
+
+        status.put(
+                "graphs_ready",
+                graphsReady
+        );
+
+        status.put(
+                "all_models_ready",
+                knnReady && lrReady
+        );
+
+        status.put(
+                "timestamp",
+                new Date().toString()
+        );
+
         if (knnReady) {
-            Map<String, Object> knn = loadJson("knn_results.json");
-            status.put("knn_accuracy",  knn.get("accuracy"));
-            status.put("knn_auc",       knn.get("auc_roc"));
+
+            Map<String, Object> knn =
+                    loadJson("knn_results.json");
+
+            status.put(
+                    "knn_accuracy",
+                    knn.get("accuracy")
+            );
+
+            status.put(
+                    "knn_auc",
+                    knn.get("auc_roc")
+            );
         }
+
         if (lrReady) {
-            Map<String, Object> lr = loadJson("lr_results.json");
-            Object metrics = lr.get("metrics");
-            status.put("lr_metrics", metrics);
+
+            Map<String, Object> lr =
+                    loadJson("lr_results.json");
+
+            status.put(
+                    "lr_metrics",
+                    lr.get("metrics")
+            );
         }
+
         return ResponseEntity.ok(status);
     }
 }
- 

@@ -1,0 +1,1954 @@
+{
+  "model": "Linear Regression Blood Demand",
+  "version": "1.0.0",
+  "features": [
+    "day_of_week",
+    "day_of_month",
+    "month",
+    "is_weekend",
+    "blood_type_encoded",
+    "requests_lag1",
+    "requests_lag7",
+    "rolling_mean_7d"
+  ],
+  "metrics": {
+    "rmse": 1.7205,
+    "mae": 1.3778,
+    "r2": 0.5998,
+    "cv_mean": 0.7159,
+    "cv_std": 0.1175
+  },
+  "forecast_days": 30,
+  "daily_forecasts": [
+    {
+      "date": "2026-06-03",
+      "blood_type": "A+",
+      "predicted_requests": 6.85,
+      "confidence_lower": 4.89,
+      "confidence_upper": 8.81
+    },
+    {
+      "date": "2026-06-04",
+      "blood_type": "A+",
+      "predicted_requests": 7.44,
+      "confidence_lower": 5.48,
+      "confidence_upper": 9.4
+    },
+    {
+      "date": "2026-06-05",
+      "blood_type": "A+",
+      "predicted_requests": 6.39,
+      "confidence_lower": 4.43,
+      "confidence_upper": 8.35
+    },
+    {
+      "date": "2026-06-06",
+      "blood_type": "A+",
+      "predicted_requests": 6.03,
+      "confidence_lower": 4.07,
+      "confidence_upper": 7.99
+    },
+    {
+      "date": "2026-06-07",
+      "blood_type": "A+",
+      "predicted_requests": 3.71,
+      "confidence_lower": 1.75,
+      "confidence_upper": 5.67
+    },
+    {
+      "date": "2026-06-08",
+      "blood_type": "A+",
+      "predicted_requests": 6.08,
+      "confidence_lower": 4.12,
+      "confidence_upper": 8.04
+    },
+    {
+      "date": "2026-06-09",
+      "blood_type": "A+",
+      "predicted_requests": 7.18,
+      "confidence_lower": 5.22,
+      "confidence_upper": 9.14
+    },
+    {
+      "date": "2026-06-10",
+      "blood_type": "A+",
+      "predicted_requests": 7.31,
+      "confidence_lower": 5.35,
+      "confidence_upper": 9.27
+    },
+    {
+      "date": "2026-06-11",
+      "blood_type": "A+",
+      "predicted_requests": 6.88,
+      "confidence_lower": 4.92,
+      "confidence_upper": 8.84
+    },
+    {
+      "date": "2026-06-12",
+      "blood_type": "A+",
+      "predicted_requests": 5.68,
+      "confidence_lower": 3.72,
+      "confidence_upper": 7.64
+    },
+    {
+      "date": "2026-06-13",
+      "blood_type": "A+",
+      "predicted_requests": 5.46,
+      "confidence_lower": 3.5,
+      "confidence_upper": 7.42
+    },
+    {
+      "date": "2026-06-14",
+      "blood_type": "A+",
+      "predicted_requests": 4.0,
+      "confidence_lower": 2.04,
+      "confidence_upper": 5.96
+    },
+    {
+      "date": "2026-06-15",
+      "blood_type": "A+",
+      "predicted_requests": 6.83,
+      "confidence_lower": 4.87,
+      "confidence_upper": 8.79
+    },
+    {
+      "date": "2026-06-16",
+      "blood_type": "A+",
+      "predicted_requests": 7.85,
+      "confidence_lower": 5.89,
+      "confidence_upper": 9.81
+    },
+    {
+      "date": "2026-06-17",
+      "blood_type": "A+",
+      "predicted_requests": 7.72,
+      "confidence_lower": 5.76,
+      "confidence_upper": 9.68
+    },
+    {
+      "date": "2026-06-18",
+      "blood_type": "A+",
+      "predicted_requests": 6.88,
+      "confidence_lower": 4.92,
+      "confidence_upper": 8.84
+    },
+    {
+      "date": "2026-06-19",
+      "blood_type": "A+",
+      "predicted_requests": 5.45,
+      "confidence_lower": 3.49,
+      "confidence_upper": 7.41
+    },
+    {
+      "date": "2026-06-20",
+      "blood_type": "A+",
+      "predicted_requests": 5.18,
+      "confidence_lower": 3.22,
+      "confidence_upper": 7.14
+    },
+    {
+      "date": "2026-06-21",
+      "blood_type": "A+",
+      "predicted_requests": 3.95,
+      "confidence_lower": 1.99,
+      "confidence_upper": 5.91
+    },
+    {
+      "date": "2026-06-22",
+      "blood_type": "A+",
+      "predicted_requests": 7.01,
+      "confidence_lower": 5.05,
+      "confidence_upper": 8.97
+    },
+    {
+      "date": "2026-06-23",
+      "blood_type": "A+",
+      "predicted_requests": 8.1,
+      "confidence_lower": 6.14,
+      "confidence_upper": 10.06
+    },
+    {
+      "date": "2026-06-24",
+      "blood_type": "A+",
+      "predicted_requests": 7.92,
+      "confidence_lower": 5.96,
+      "confidence_upper": 9.88
+    },
+    {
+      "date": "2026-06-25",
+      "blood_type": "A+",
+      "predicted_requests": 6.92,
+      "confidence_lower": 4.96,
+      "confidence_upper": 8.88
+    },
+    {
+      "date": "2026-06-26",
+      "blood_type": "A+",
+      "predicted_requests": 5.36,
+      "confidence_lower": 3.4,
+      "confidence_upper": 7.32
+    },
+    {
+      "date": "2026-06-27",
+      "blood_type": "A+",
+      "predicted_requests": 5.01,
+      "confidence_lower": 3.05,
+      "confidence_upper": 6.97
+    },
+    {
+      "date": "2026-06-28",
+      "blood_type": "A+",
+      "predicted_requests": 3.81,
+      "confidence_lower": 1.85,
+      "confidence_upper": 5.77
+    },
+    {
+      "date": "2026-06-29",
+      "blood_type": "A+",
+      "predicted_requests": 6.96,
+      "confidence_lower": 5.0,
+      "confidence_upper": 8.92
+    },
+    {
+      "date": "2026-06-30",
+      "blood_type": "A+",
+      "predicted_requests": 8.1,
+      "confidence_lower": 6.14,
+      "confidence_upper": 10.06
+    },
+    {
+      "date": "2026-07-01",
+      "blood_type": "A+",
+      "predicted_requests": 8.13,
+      "confidence_lower": 6.17,
+      "confidence_upper": 10.09
+    },
+    {
+      "date": "2026-07-02",
+      "blood_type": "A+",
+      "predicted_requests": 7.19,
+      "confidence_lower": 5.23,
+      "confidence_upper": 9.15
+    },
+    {
+      "date": "2026-06-03",
+      "blood_type": "A-",
+      "predicted_requests": 17.35,
+      "confidence_lower": 13.27,
+      "confidence_upper": 21.43
+    },
+    {
+      "date": "2026-06-04",
+      "blood_type": "A-",
+      "predicted_requests": 17.43,
+      "confidence_lower": 13.33,
+      "confidence_upper": 21.53
+    },
+    {
+      "date": "2026-06-05",
+      "blood_type": "A-",
+      "predicted_requests": 16.75,
+      "confidence_lower": 12.81,
+      "confidence_upper": 20.69
+    },
+    {
+      "date": "2026-06-06",
+      "blood_type": "A-",
+      "predicted_requests": 16.54,
+      "confidence_lower": 12.65,
+      "confidence_upper": 20.43
+    },
+    {
+      "date": "2026-06-07",
+      "blood_type": "A-",
+      "predicted_requests": 14.28,
+      "confidence_lower": 10.92,
+      "confidence_upper": 17.64
+    },
+    {
+      "date": "2026-06-08",
+      "blood_type": "A-",
+      "predicted_requests": 16.95,
+      "confidence_lower": 12.96,
+      "confidence_upper": 20.94
+    },
+    {
+      "date": "2026-06-09",
+      "blood_type": "A-",
+      "predicted_requests": 17.87,
+      "confidence_lower": 13.67,
+      "confidence_upper": 22.07
+    },
+    {
+      "date": "2026-06-10",
+      "blood_type": "A-",
+      "predicted_requests": 17.76,
+      "confidence_lower": 13.58,
+      "confidence_upper": 21.94
+    },
+    {
+      "date": "2026-06-11",
+      "blood_type": "A-",
+      "predicted_requests": 17.07,
+      "confidence_lower": 13.06,
+      "confidence_upper": 21.08
+    },
+    {
+      "date": "2026-06-12",
+      "blood_type": "A-",
+      "predicted_requests": 15.86,
+      "confidence_lower": 12.13,
+      "confidence_upper": 19.59
+    },
+    {
+      "date": "2026-06-13",
+      "blood_type": "A-",
+      "predicted_requests": 15.67,
+      "confidence_lower": 11.98,
+      "confidence_upper": 19.36
+    },
+    {
+      "date": "2026-06-14",
+      "blood_type": "A-",
+      "predicted_requests": 14.23,
+      "confidence_lower": 10.88,
+      "confidence_upper": 17.58
+    },
+    {
+      "date": "2026-06-15",
+      "blood_type": "A-",
+      "predicted_requests": 17.15,
+      "confidence_lower": 13.12,
+      "confidence_upper": 21.18
+    },
+    {
+      "date": "2026-06-16",
+      "blood_type": "A-",
+      "predicted_requests": 18.15,
+      "confidence_lower": 13.88,
+      "confidence_upper": 22.42
+    },
+    {
+      "date": "2026-06-17",
+      "blood_type": "A-",
+      "predicted_requests": 17.93,
+      "confidence_lower": 13.71,
+      "confidence_upper": 22.15
+    },
+    {
+      "date": "2026-06-18",
+      "blood_type": "A-",
+      "predicted_requests": 16.95,
+      "confidence_lower": 12.96,
+      "confidence_upper": 20.94
+    },
+    {
+      "date": "2026-06-19",
+      "blood_type": "A-",
+      "predicted_requests": 15.46,
+      "confidence_lower": 11.82,
+      "confidence_upper": 19.1
+    },
+    {
+      "date": "2026-06-20",
+      "blood_type": "A-",
+      "predicted_requests": 15.16,
+      "confidence_lower": 11.59,
+      "confidence_upper": 18.73
+    },
+    {
+      "date": "2026-06-21",
+      "blood_type": "A-",
+      "predicted_requests": 13.91,
+      "confidence_lower": 10.64,
+      "confidence_upper": 17.18
+    },
+    {
+      "date": "2026-06-22",
+      "blood_type": "A-",
+      "predicted_requests": 16.98,
+      "confidence_lower": 12.99,
+      "confidence_upper": 20.97
+    },
+    {
+      "date": "2026-06-23",
+      "blood_type": "A-",
+      "predicted_requests": 18.06,
+      "confidence_lower": 13.81,
+      "confidence_upper": 22.31
+    },
+    {
+      "date": "2026-06-24",
+      "blood_type": "A-",
+      "predicted_requests": 17.84,
+      "confidence_lower": 13.64,
+      "confidence_upper": 22.04
+    },
+    {
+      "date": "2026-06-25",
+      "blood_type": "A-",
+      "predicted_requests": 16.77,
+      "confidence_lower": 12.83,
+      "confidence_upper": 20.71
+    },
+    {
+      "date": "2026-06-26",
+      "blood_type": "A-",
+      "predicted_requests": 15.15,
+      "confidence_lower": 11.59,
+      "confidence_upper": 18.71
+    },
+    {
+      "date": "2026-06-27",
+      "blood_type": "A-",
+      "predicted_requests": 14.76,
+      "confidence_lower": 11.29,
+      "confidence_upper": 18.23
+    },
+    {
+      "date": "2026-06-28",
+      "blood_type": "A-",
+      "predicted_requests": 13.53,
+      "confidence_lower": 10.35,
+      "confidence_upper": 16.71
+    },
+    {
+      "date": "2026-06-29",
+      "blood_type": "A-",
+      "predicted_requests": 16.65,
+      "confidence_lower": 12.73,
+      "confidence_upper": 20.57
+    },
+    {
+      "date": "2026-06-30",
+      "blood_type": "A-",
+      "predicted_requests": 17.77,
+      "confidence_lower": 13.59,
+      "confidence_upper": 21.95
+    },
+    {
+      "date": "2026-07-01",
+      "blood_type": "A-",
+      "predicted_requests": 17.77,
+      "confidence_lower": 13.59,
+      "confidence_upper": 21.95
+    },
+    {
+      "date": "2026-07-02",
+      "blood_type": "A-",
+      "predicted_requests": 16.79,
+      "confidence_lower": 12.84,
+      "confidence_upper": 20.74
+    },
+    {
+      "date": "2026-06-03",
+      "blood_type": "B+",
+      "predicted_requests": 20.45,
+      "confidence_lower": 15.64,
+      "confidence_upper": 25.26
+    },
+    {
+      "date": "2026-06-04",
+      "blood_type": "B+",
+      "predicted_requests": 21.12,
+      "confidence_lower": 16.15,
+      "confidence_upper": 26.09
+    },
+    {
+      "date": "2026-06-05",
+      "blood_type": "B+",
+      "predicted_requests": 18.63,
+      "confidence_lower": 14.25,
+      "confidence_upper": 23.01
+    },
+    {
+      "date": "2026-06-06",
+      "blood_type": "B+",
+      "predicted_requests": 17.94,
+      "confidence_lower": 13.72,
+      "confidence_upper": 22.16
+    },
+    {
+      "date": "2026-06-07",
+      "blood_type": "B+",
+      "predicted_requests": 16.07,
+      "confidence_lower": 12.29,
+      "confidence_upper": 19.85
+    },
+    {
+      "date": "2026-06-08",
+      "blood_type": "B+",
+      "predicted_requests": 18.92,
+      "confidence_lower": 14.47,
+      "confidence_upper": 23.37
+    },
+    {
+      "date": "2026-06-09",
+      "blood_type": "B+",
+      "predicted_requests": 20.21,
+      "confidence_lower": 15.46,
+      "confidence_upper": 24.96
+    },
+    {
+      "date": "2026-06-10",
+      "blood_type": "B+",
+      "predicted_requests": 20.29,
+      "confidence_lower": 15.52,
+      "confidence_upper": 25.06
+    },
+    {
+      "date": "2026-06-11",
+      "blood_type": "B+",
+      "predicted_requests": 19.84,
+      "confidence_lower": 15.17,
+      "confidence_upper": 24.51
+    },
+    {
+      "date": "2026-06-12",
+      "blood_type": "B+",
+      "predicted_requests": 18.2,
+      "confidence_lower": 13.92,
+      "confidence_upper": 22.48
+    },
+    {
+      "date": "2026-06-13",
+      "blood_type": "B+",
+      "predicted_requests": 17.68,
+      "confidence_lower": 13.52,
+      "confidence_upper": 21.84
+    },
+    {
+      "date": "2026-06-14",
+      "blood_type": "B+",
+      "predicted_requests": 16.21,
+      "confidence_lower": 12.4,
+      "confidence_upper": 20.02
+    },
+    {
+      "date": "2026-06-15",
+      "blood_type": "B+",
+      "predicted_requests": 19.17,
+      "confidence_lower": 14.66,
+      "confidence_upper": 23.68
+    },
+    {
+      "date": "2026-06-16",
+      "blood_type": "B+",
+      "predicted_requests": 20.3,
+      "confidence_lower": 15.53,
+      "confidence_upper": 25.07
+    },
+    {
+      "date": "2026-06-17",
+      "blood_type": "B+",
+      "predicted_requests": 20.19,
+      "confidence_lower": 15.44,
+      "confidence_upper": 24.94
+    },
+    {
+      "date": "2026-06-18",
+      "blood_type": "B+",
+      "predicted_requests": 19.33,
+      "confidence_lower": 14.78,
+      "confidence_upper": 23.88
+    },
+    {
+      "date": "2026-06-19",
+      "blood_type": "B+",
+      "predicted_requests": 17.75,
+      "confidence_lower": 13.58,
+      "confidence_upper": 21.92
+    },
+    {
+      "date": "2026-06-20",
+      "blood_type": "B+",
+      "predicted_requests": 17.31,
+      "confidence_lower": 13.24,
+      "confidence_upper": 21.38
+    },
+    {
+      "date": "2026-06-21",
+      "blood_type": "B+",
+      "predicted_requests": 15.99,
+      "confidence_lower": 12.23,
+      "confidence_upper": 19.75
+    },
+    {
+      "date": "2026-06-22",
+      "blood_type": "B+",
+      "predicted_requests": 19.05,
+      "confidence_lower": 14.57,
+      "confidence_upper": 23.53
+    },
+    {
+      "date": "2026-06-23",
+      "blood_type": "B+",
+      "predicted_requests": 20.16,
+      "confidence_lower": 15.42,
+      "confidence_upper": 24.9
+    },
+    {
+      "date": "2026-06-24",
+      "blood_type": "B+",
+      "predicted_requests": 19.98,
+      "confidence_lower": 15.28,
+      "confidence_upper": 24.68
+    },
+    {
+      "date": "2026-06-25",
+      "blood_type": "B+",
+      "predicted_requests": 18.97,
+      "confidence_lower": 14.51,
+      "confidence_upper": 23.43
+    },
+    {
+      "date": "2026-06-26",
+      "blood_type": "B+",
+      "predicted_requests": 17.34,
+      "confidence_lower": 13.26,
+      "confidence_upper": 21.42
+    },
+    {
+      "date": "2026-06-27",
+      "blood_type": "B+",
+      "predicted_requests": 16.9,
+      "confidence_lower": 12.93,
+      "confidence_upper": 20.87
+    },
+    {
+      "date": "2026-06-28",
+      "blood_type": "B+",
+      "predicted_requests": 15.63,
+      "confidence_lower": 11.95,
+      "confidence_upper": 19.31
+    },
+    {
+      "date": "2026-06-29",
+      "blood_type": "B+",
+      "predicted_requests": 18.73,
+      "confidence_lower": 14.32,
+      "confidence_upper": 23.14
+    },
+    {
+      "date": "2026-06-30",
+      "blood_type": "B+",
+      "predicted_requests": 19.85,
+      "confidence_lower": 15.18,
+      "confidence_upper": 24.52
+    },
+    {
+      "date": "2026-07-01",
+      "blood_type": "B+",
+      "predicted_requests": 19.86,
+      "confidence_lower": 15.19,
+      "confidence_upper": 24.53
+    },
+    {
+      "date": "2026-07-02",
+      "blood_type": "B+",
+      "predicted_requests": 18.89,
+      "confidence_lower": 14.45,
+      "confidence_upper": 23.33
+    },
+    {
+      "date": "2026-06-03",
+      "blood_type": "B-",
+      "predicted_requests": 7.57,
+      "confidence_lower": 5.61,
+      "confidence_upper": 9.53
+    },
+    {
+      "date": "2026-06-04",
+      "blood_type": "B-",
+      "predicted_requests": 7.89,
+      "confidence_lower": 5.93,
+      "confidence_upper": 9.85
+    },
+    {
+      "date": "2026-06-05",
+      "blood_type": "B-",
+      "predicted_requests": 6.44,
+      "confidence_lower": 4.48,
+      "confidence_upper": 8.4
+    },
+    {
+      "date": "2026-06-06",
+      "blood_type": "B-",
+      "predicted_requests": 6.21,
+      "confidence_lower": 4.25,
+      "confidence_upper": 8.17
+    },
+    {
+      "date": "2026-06-07",
+      "blood_type": "B-",
+      "predicted_requests": 4.54,
+      "confidence_lower": 2.58,
+      "confidence_upper": 6.5
+    },
+    {
+      "date": "2026-06-08",
+      "blood_type": "B-",
+      "predicted_requests": 6.89,
+      "confidence_lower": 4.93,
+      "confidence_upper": 8.85
+    },
+    {
+      "date": "2026-06-09",
+      "blood_type": "B-",
+      "predicted_requests": 7.68,
+      "confidence_lower": 5.72,
+      "confidence_upper": 9.64
+    },
+    {
+      "date": "2026-06-10",
+      "blood_type": "B-",
+      "predicted_requests": 7.89,
+      "confidence_lower": 5.93,
+      "confidence_upper": 9.85
+    },
+    {
+      "date": "2026-06-11",
+      "blood_type": "B-",
+      "predicted_requests": 7.42,
+      "confidence_lower": 5.46,
+      "confidence_upper": 9.38
+    },
+    {
+      "date": "2026-06-12",
+      "blood_type": "B-",
+      "predicted_requests": 6.09,
+      "confidence_lower": 4.13,
+      "confidence_upper": 8.05
+    },
+    {
+      "date": "2026-06-13",
+      "blood_type": "B-",
+      "predicted_requests": 5.85,
+      "confidence_lower": 3.89,
+      "confidence_upper": 7.81
+    },
+    {
+      "date": "2026-06-14",
+      "blood_type": "B-",
+      "predicted_requests": 4.57,
+      "confidence_lower": 2.61,
+      "confidence_upper": 6.53
+    },
+    {
+      "date": "2026-06-15",
+      "blood_type": "B-",
+      "predicted_requests": 7.48,
+      "confidence_lower": 5.52,
+      "confidence_upper": 9.44
+    },
+    {
+      "date": "2026-06-16",
+      "blood_type": "B-",
+      "predicted_requests": 8.44,
+      "confidence_lower": 6.45,
+      "confidence_upper": 10.43
+    },
+    {
+      "date": "2026-06-17",
+      "blood_type": "B-",
+      "predicted_requests": 8.31,
+      "confidence_lower": 6.35,
+      "confidence_upper": 10.27
+    },
+    {
+      "date": "2026-06-18",
+      "blood_type": "B-",
+      "predicted_requests": 7.45,
+      "confidence_lower": 5.49,
+      "confidence_upper": 9.41
+    },
+    {
+      "date": "2026-06-19",
+      "blood_type": "B-",
+      "predicted_requests": 5.99,
+      "confidence_lower": 4.03,
+      "confidence_upper": 7.95
+    },
+    {
+      "date": "2026-06-20",
+      "blood_type": "B-",
+      "predicted_requests": 5.7,
+      "confidence_lower": 3.74,
+      "confidence_upper": 7.66
+    },
+    {
+      "date": "2026-06-21",
+      "blood_type": "B-",
+      "predicted_requests": 4.51,
+      "confidence_lower": 2.55,
+      "confidence_upper": 6.47
+    },
+    {
+      "date": "2026-06-22",
+      "blood_type": "B-",
+      "predicted_requests": 7.62,
+      "confidence_lower": 5.66,
+      "confidence_upper": 9.58
+    },
+    {
+      "date": "2026-06-23",
+      "blood_type": "B-",
+      "predicted_requests": 8.71,
+      "confidence_lower": 6.66,
+      "confidence_upper": 10.76
+    },
+    {
+      "date": "2026-06-24",
+      "blood_type": "B-",
+      "predicted_requests": 8.53,
+      "confidence_lower": 6.52,
+      "confidence_upper": 10.54
+    },
+    {
+      "date": "2026-06-25",
+      "blood_type": "B-",
+      "predicted_requests": 7.53,
+      "confidence_lower": 5.57,
+      "confidence_upper": 9.49
+    },
+    {
+      "date": "2026-06-26",
+      "blood_type": "B-",
+      "predicted_requests": 5.96,
+      "confidence_lower": 4.0,
+      "confidence_upper": 7.92
+    },
+    {
+      "date": "2026-06-27",
+      "blood_type": "B-",
+      "predicted_requests": 5.6,
+      "confidence_lower": 3.64,
+      "confidence_upper": 7.56
+    },
+    {
+      "date": "2026-06-28",
+      "blood_type": "B-",
+      "predicted_requests": 4.41,
+      "confidence_lower": 2.45,
+      "confidence_upper": 6.37
+    },
+    {
+      "date": "2026-06-29",
+      "blood_type": "B-",
+      "predicted_requests": 7.58,
+      "confidence_lower": 5.62,
+      "confidence_upper": 9.54
+    },
+    {
+      "date": "2026-06-30",
+      "blood_type": "B-",
+      "predicted_requests": 8.73,
+      "confidence_lower": 6.68,
+      "confidence_upper": 10.78
+    },
+    {
+      "date": "2026-07-01",
+      "blood_type": "B-",
+      "predicted_requests": 8.77,
+      "confidence_lower": 6.71,
+      "confidence_upper": 10.83
+    },
+    {
+      "date": "2026-07-02",
+      "blood_type": "B-",
+      "predicted_requests": 7.83,
+      "confidence_lower": 5.87,
+      "confidence_upper": 9.79
+    },
+    {
+      "date": "2026-06-03",
+      "blood_type": "AB+",
+      "predicted_requests": 18.37,
+      "confidence_lower": 14.05,
+      "confidence_upper": 22.69
+    },
+    {
+      "date": "2026-06-04",
+      "blood_type": "AB+",
+      "predicted_requests": 18.14,
+      "confidence_lower": 13.87,
+      "confidence_upper": 22.41
+    },
+    {
+      "date": "2026-06-05",
+      "blood_type": "AB+",
+      "predicted_requests": 16.72,
+      "confidence_lower": 12.79,
+      "confidence_upper": 20.65
+    },
+    {
+      "date": "2026-06-06",
+      "blood_type": "AB+",
+      "predicted_requests": 15.62,
+      "confidence_lower": 11.95,
+      "confidence_upper": 19.29
+    },
+    {
+      "date": "2026-06-07",
+      "blood_type": "AB+",
+      "predicted_requests": 14.15,
+      "confidence_lower": 10.82,
+      "confidence_upper": 17.48
+    },
+    {
+      "date": "2026-06-08",
+      "blood_type": "AB+",
+      "predicted_requests": 16.01,
+      "confidence_lower": 12.24,
+      "confidence_upper": 19.78
+    },
+    {
+      "date": "2026-06-09",
+      "blood_type": "AB+",
+      "predicted_requests": 17.75,
+      "confidence_lower": 13.58,
+      "confidence_upper": 21.92
+    },
+    {
+      "date": "2026-06-10",
+      "blood_type": "AB+",
+      "predicted_requests": 18.01,
+      "confidence_lower": 13.77,
+      "confidence_upper": 22.25
+    },
+    {
+      "date": "2026-06-11",
+      "blood_type": "AB+",
+      "predicted_requests": 17.38,
+      "confidence_lower": 13.29,
+      "confidence_upper": 21.47
+    },
+    {
+      "date": "2026-06-12",
+      "blood_type": "AB+",
+      "predicted_requests": 15.97,
+      "confidence_lower": 12.21,
+      "confidence_upper": 19.73
+    },
+    {
+      "date": "2026-06-13",
+      "blood_type": "AB+",
+      "predicted_requests": 15.44,
+      "confidence_lower": 11.81,
+      "confidence_upper": 19.07
+    },
+    {
+      "date": "2026-06-14",
+      "blood_type": "AB+",
+      "predicted_requests": 14.08,
+      "confidence_lower": 10.77,
+      "confidence_upper": 17.39
+    },
+    {
+      "date": "2026-06-15",
+      "blood_type": "AB+",
+      "predicted_requests": 16.81,
+      "confidence_lower": 12.86,
+      "confidence_upper": 20.76
+    },
+    {
+      "date": "2026-06-16",
+      "blood_type": "AB+",
+      "predicted_requests": 17.97,
+      "confidence_lower": 13.74,
+      "confidence_upper": 22.2
+    },
+    {
+      "date": "2026-06-17",
+      "blood_type": "AB+",
+      "predicted_requests": 17.93,
+      "confidence_lower": 13.71,
+      "confidence_upper": 22.15
+    },
+    {
+      "date": "2026-06-18",
+      "blood_type": "AB+",
+      "predicted_requests": 17.05,
+      "confidence_lower": 13.04,
+      "confidence_upper": 21.06
+    },
+    {
+      "date": "2026-06-19",
+      "blood_type": "AB+",
+      "predicted_requests": 15.54,
+      "confidence_lower": 11.88,
+      "confidence_upper": 19.2
+    },
+    {
+      "date": "2026-06-20",
+      "blood_type": "AB+",
+      "predicted_requests": 15.13,
+      "confidence_lower": 11.57,
+      "confidence_upper": 18.69
+    },
+    {
+      "date": "2026-06-21",
+      "blood_type": "AB+",
+      "predicted_requests": 13.86,
+      "confidence_lower": 10.6,
+      "confidence_upper": 17.12
+    },
+    {
+      "date": "2026-06-22",
+      "blood_type": "AB+",
+      "predicted_requests": 16.87,
+      "confidence_lower": 12.9,
+      "confidence_upper": 20.84
+    },
+    {
+      "date": "2026-06-23",
+      "blood_type": "AB+",
+      "predicted_requests": 17.97,
+      "confidence_lower": 13.74,
+      "confidence_upper": 22.2
+    },
+    {
+      "date": "2026-06-24",
+      "blood_type": "AB+",
+      "predicted_requests": 17.81,
+      "confidence_lower": 13.62,
+      "confidence_upper": 22.0
+    },
+    {
+      "date": "2026-06-25",
+      "blood_type": "AB+",
+      "predicted_requests": 16.81,
+      "confidence_lower": 12.86,
+      "confidence_upper": 20.76
+    },
+    {
+      "date": "2026-06-26",
+      "blood_type": "AB+",
+      "predicted_requests": 15.21,
+      "confidence_lower": 11.63,
+      "confidence_upper": 18.79
+    },
+    {
+      "date": "2026-06-27",
+      "blood_type": "AB+",
+      "predicted_requests": 14.8,
+      "confidence_lower": 11.32,
+      "confidence_upper": 18.28
+    },
+    {
+      "date": "2026-06-28",
+      "blood_type": "AB+",
+      "predicted_requests": 13.55,
+      "confidence_lower": 10.36,
+      "confidence_upper": 16.74
+    },
+    {
+      "date": "2026-06-29",
+      "blood_type": "AB+",
+      "predicted_requests": 16.65,
+      "confidence_lower": 12.73,
+      "confidence_upper": 20.57
+    },
+    {
+      "date": "2026-06-30",
+      "blood_type": "AB+",
+      "predicted_requests": 17.77,
+      "confidence_lower": 13.59,
+      "confidence_upper": 21.95
+    },
+    {
+      "date": "2026-07-01",
+      "blood_type": "AB+",
+      "predicted_requests": 17.79,
+      "confidence_lower": 13.61,
+      "confidence_upper": 21.97
+    },
+    {
+      "date": "2026-07-02",
+      "blood_type": "AB+",
+      "predicted_requests": 16.84,
+      "confidence_lower": 12.88,
+      "confidence_upper": 20.8
+    },
+    {
+      "date": "2026-06-03",
+      "blood_type": "AB-",
+      "predicted_requests": 20.7,
+      "confidence_lower": 15.83,
+      "confidence_upper": 25.57
+    },
+    {
+      "date": "2026-06-04",
+      "blood_type": "AB-",
+      "predicted_requests": 20.48,
+      "confidence_lower": 15.66,
+      "confidence_upper": 25.3
+    },
+    {
+      "date": "2026-06-05",
+      "blood_type": "AB-",
+      "predicted_requests": 19.36,
+      "confidence_lower": 14.81,
+      "confidence_upper": 23.91
+    },
+    {
+      "date": "2026-06-06",
+      "blood_type": "AB-",
+      "predicted_requests": 18.68,
+      "confidence_lower": 14.29,
+      "confidence_upper": 23.07
+    },
+    {
+      "date": "2026-06-07",
+      "blood_type": "AB-",
+      "predicted_requests": 17.09,
+      "confidence_lower": 13.07,
+      "confidence_upper": 21.11
+    },
+    {
+      "date": "2026-06-08",
+      "blood_type": "AB-",
+      "predicted_requests": 18.89,
+      "confidence_lower": 14.45,
+      "confidence_upper": 23.33
+    },
+    {
+      "date": "2026-06-09",
+      "blood_type": "AB-",
+      "predicted_requests": 20.61,
+      "confidence_lower": 15.76,
+      "confidence_upper": 25.46
+    },
+    {
+      "date": "2026-06-10",
+      "blood_type": "AB-",
+      "predicted_requests": 20.66,
+      "confidence_lower": 15.8,
+      "confidence_upper": 25.52
+    },
+    {
+      "date": "2026-06-11",
+      "blood_type": "AB-",
+      "predicted_requests": 19.94,
+      "confidence_lower": 15.25,
+      "confidence_upper": 24.63
+    },
+    {
+      "date": "2026-06-12",
+      "blood_type": "AB-",
+      "predicted_requests": 18.58,
+      "confidence_lower": 14.21,
+      "confidence_upper": 22.95
+    },
+    {
+      "date": "2026-06-13",
+      "blood_type": "AB-",
+      "predicted_requests": 18.19,
+      "confidence_lower": 13.91,
+      "confidence_upper": 22.47
+    },
+    {
+      "date": "2026-06-14",
+      "blood_type": "AB-",
+      "predicted_requests": 16.86,
+      "confidence_lower": 12.89,
+      "confidence_upper": 20.83
+    },
+    {
+      "date": "2026-06-15",
+      "blood_type": "AB-",
+      "predicted_requests": 19.58,
+      "confidence_lower": 14.97,
+      "confidence_upper": 24.19
+    },
+    {
+      "date": "2026-06-16",
+      "blood_type": "AB-",
+      "predicted_requests": 20.72,
+      "confidence_lower": 15.85,
+      "confidence_upper": 25.59
+    },
+    {
+      "date": "2026-06-17",
+      "blood_type": "AB-",
+      "predicted_requests": 20.61,
+      "confidence_lower": 15.76,
+      "confidence_upper": 25.46
+    },
+    {
+      "date": "2026-06-18",
+      "blood_type": "AB-",
+      "predicted_requests": 19.67,
+      "confidence_lower": 15.04,
+      "confidence_upper": 24.3
+    },
+    {
+      "date": "2026-06-19",
+      "blood_type": "AB-",
+      "predicted_requests": 18.15,
+      "confidence_lower": 13.88,
+      "confidence_upper": 22.42
+    },
+    {
+      "date": "2026-06-20",
+      "blood_type": "AB-",
+      "predicted_requests": 17.77,
+      "confidence_lower": 13.59,
+      "confidence_upper": 21.95
+    },
+    {
+      "date": "2026-06-21",
+      "blood_type": "AB-",
+      "predicted_requests": 16.52,
+      "confidence_lower": 12.63,
+      "confidence_upper": 20.41
+    },
+    {
+      "date": "2026-06-22",
+      "blood_type": "AB-",
+      "predicted_requests": 19.54,
+      "confidence_lower": 14.94,
+      "confidence_upper": 24.14
+    },
+    {
+      "date": "2026-06-23",
+      "blood_type": "AB-",
+      "predicted_requests": 20.64,
+      "confidence_lower": 15.79,
+      "confidence_upper": 25.49
+    },
+    {
+      "date": "2026-06-24",
+      "blood_type": "AB-",
+      "predicted_requests": 20.45,
+      "confidence_lower": 15.64,
+      "confidence_upper": 25.26
+    },
+    {
+      "date": "2026-06-25",
+      "blood_type": "AB-",
+      "predicted_requests": 19.41,
+      "confidence_lower": 14.84,
+      "confidence_upper": 23.98
+    },
+    {
+      "date": "2026-06-26",
+      "blood_type": "AB-",
+      "predicted_requests": 17.79,
+      "confidence_lower": 13.61,
+      "confidence_upper": 21.97
+    },
+    {
+      "date": "2026-06-27",
+      "blood_type": "AB-",
+      "predicted_requests": 17.38,
+      "confidence_lower": 13.29,
+      "confidence_upper": 21.47
+    },
+    {
+      "date": "2026-06-28",
+      "blood_type": "AB-",
+      "predicted_requests": 16.14,
+      "confidence_lower": 12.34,
+      "confidence_upper": 19.94
+    },
+    {
+      "date": "2026-06-29",
+      "blood_type": "AB-",
+      "predicted_requests": 19.24,
+      "confidence_lower": 14.71,
+      "confidence_upper": 23.77
+    },
+    {
+      "date": "2026-06-30",
+      "blood_type": "AB-",
+      "predicted_requests": 20.36,
+      "confidence_lower": 15.57,
+      "confidence_upper": 25.15
+    },
+    {
+      "date": "2026-07-01",
+      "blood_type": "AB-",
+      "predicted_requests": 20.37,
+      "confidence_lower": 15.58,
+      "confidence_upper": 25.16
+    },
+    {
+      "date": "2026-07-02",
+      "blood_type": "AB-",
+      "predicted_requests": 19.4,
+      "confidence_lower": 14.84,
+      "confidence_upper": 23.96
+    },
+    {
+      "date": "2026-06-03",
+      "blood_type": "O+",
+      "predicted_requests": 6.38,
+      "confidence_lower": 4.42,
+      "confidence_upper": 8.34
+    },
+    {
+      "date": "2026-06-04",
+      "blood_type": "O+",
+      "predicted_requests": 6.64,
+      "confidence_lower": 4.68,
+      "confidence_upper": 8.6
+    },
+    {
+      "date": "2026-06-05",
+      "blood_type": "O+",
+      "predicted_requests": 6.33,
+      "confidence_lower": 4.37,
+      "confidence_upper": 8.29
+    },
+    {
+      "date": "2026-06-06",
+      "blood_type": "O+",
+      "predicted_requests": 5.72,
+      "confidence_lower": 3.76,
+      "confidence_upper": 7.68
+    },
+    {
+      "date": "2026-06-07",
+      "blood_type": "O+",
+      "predicted_requests": 3.59,
+      "confidence_lower": 1.63,
+      "confidence_upper": 5.55
+    },
+    {
+      "date": "2026-06-08",
+      "blood_type": "O+",
+      "predicted_requests": 6.62,
+      "confidence_lower": 4.66,
+      "confidence_upper": 8.58
+    },
+    {
+      "date": "2026-06-09",
+      "blood_type": "O+",
+      "predicted_requests": 7.12,
+      "confidence_lower": 5.16,
+      "confidence_upper": 9.08
+    },
+    {
+      "date": "2026-06-10",
+      "blood_type": "O+",
+      "predicted_requests": 7.15,
+      "confidence_lower": 5.19,
+      "confidence_upper": 9.11
+    },
+    {
+      "date": "2026-06-11",
+      "blood_type": "O+",
+      "predicted_requests": 6.59,
+      "confidence_lower": 4.63,
+      "confidence_upper": 8.55
+    },
+    {
+      "date": "2026-06-12",
+      "blood_type": "O+",
+      "predicted_requests": 5.56,
+      "confidence_lower": 3.6,
+      "confidence_upper": 7.52
+    },
+    {
+      "date": "2026-06-13",
+      "blood_type": "O+",
+      "predicted_requests": 5.35,
+      "confidence_lower": 3.39,
+      "confidence_upper": 7.31
+    },
+    {
+      "date": "2026-06-14",
+      "blood_type": "O+",
+      "predicted_requests": 3.95,
+      "confidence_lower": 1.99,
+      "confidence_upper": 5.91
+    },
+    {
+      "date": "2026-06-15",
+      "blood_type": "O+",
+      "predicted_requests": 7.0,
+      "confidence_lower": 5.04,
+      "confidence_upper": 8.96
+    },
+    {
+      "date": "2026-06-16",
+      "blood_type": "O+",
+      "predicted_requests": 7.94,
+      "confidence_lower": 5.98,
+      "confidence_upper": 9.9
+    },
+    {
+      "date": "2026-06-17",
+      "blood_type": "O+",
+      "predicted_requests": 7.75,
+      "confidence_lower": 5.79,
+      "confidence_upper": 9.71
+    },
+    {
+      "date": "2026-06-18",
+      "blood_type": "O+",
+      "predicted_requests": 6.84,
+      "confidence_lower": 4.88,
+      "confidence_upper": 8.8
+    },
+    {
+      "date": "2026-06-19",
+      "blood_type": "O+",
+      "predicted_requests": 5.45,
+      "confidence_lower": 3.49,
+      "confidence_upper": 7.41
+    },
+    {
+      "date": "2026-06-20",
+      "blood_type": "O+",
+      "predicted_requests": 5.2,
+      "confidence_lower": 3.24,
+      "confidence_upper": 7.16
+    },
+    {
+      "date": "2026-06-21",
+      "blood_type": "O+",
+      "predicted_requests": 4.0,
+      "confidence_lower": 2.04,
+      "confidence_upper": 5.96
+    },
+    {
+      "date": "2026-06-22",
+      "blood_type": "O+",
+      "predicted_requests": 7.14,
+      "confidence_lower": 5.18,
+      "confidence_upper": 9.1
+    },
+    {
+      "date": "2026-06-23",
+      "blood_type": "O+",
+      "predicted_requests": 8.25,
+      "confidence_lower": 6.29,
+      "confidence_upper": 10.21
+    },
+    {
+      "date": "2026-06-24",
+      "blood_type": "O+",
+      "predicted_requests": 8.06,
+      "confidence_lower": 6.1,
+      "confidence_upper": 10.02
+    },
+    {
+      "date": "2026-06-25",
+      "blood_type": "O+",
+      "predicted_requests": 7.04,
+      "confidence_lower": 5.08,
+      "confidence_upper": 9.0
+    },
+    {
+      "date": "2026-06-26",
+      "blood_type": "O+",
+      "predicted_requests": 5.48,
+      "confidence_lower": 3.52,
+      "confidence_upper": 7.44
+    },
+    {
+      "date": "2026-06-27",
+      "blood_type": "O+",
+      "predicted_requests": 5.15,
+      "confidence_lower": 3.19,
+      "confidence_upper": 7.11
+    },
+    {
+      "date": "2026-06-28",
+      "blood_type": "O+",
+      "predicted_requests": 3.97,
+      "confidence_lower": 2.01,
+      "confidence_upper": 5.93
+    },
+    {
+      "date": "2026-06-29",
+      "blood_type": "O+",
+      "predicted_requests": 7.15,
+      "confidence_lower": 5.19,
+      "confidence_upper": 9.11
+    },
+    {
+      "date": "2026-06-30",
+      "blood_type": "O+",
+      "predicted_requests": 8.32,
+      "confidence_lower": 6.36,
+      "confidence_upper": 10.28
+    },
+    {
+      "date": "2026-07-01",
+      "blood_type": "O+",
+      "predicted_requests": 8.36,
+      "confidence_lower": 6.39,
+      "confidence_upper": 10.33
+    },
+    {
+      "date": "2026-07-02",
+      "blood_type": "O+",
+      "predicted_requests": 7.42,
+      "confidence_lower": 5.46,
+      "confidence_upper": 9.38
+    },
+    {
+      "date": "2026-06-03",
+      "blood_type": "O-",
+      "predicted_requests": 8.69,
+      "confidence_lower": 6.65,
+      "confidence_upper": 10.73
+    },
+    {
+      "date": "2026-06-04",
+      "blood_type": "O-",
+      "predicted_requests": 8.62,
+      "confidence_lower": 6.59,
+      "confidence_upper": 10.65
+    },
+    {
+      "date": "2026-06-05",
+      "blood_type": "O-",
+      "predicted_requests": 7.29,
+      "confidence_lower": 5.33,
+      "confidence_upper": 9.25
+    },
+    {
+      "date": "2026-06-06",
+      "blood_type": "O-",
+      "predicted_requests": 6.25,
+      "confidence_lower": 4.29,
+      "confidence_upper": 8.21
+    },
+    {
+      "date": "2026-06-07",
+      "blood_type": "O-",
+      "predicted_requests": 5.98,
+      "confidence_lower": 4.02,
+      "confidence_upper": 7.94
+    },
+    {
+      "date": "2026-06-08",
+      "blood_type": "O-",
+      "predicted_requests": 7.48,
+      "confidence_lower": 5.52,
+      "confidence_upper": 9.44
+    },
+    {
+      "date": "2026-06-09",
+      "blood_type": "O-",
+      "predicted_requests": 8.79,
+      "confidence_lower": 6.72,
+      "confidence_upper": 10.86
+    },
+    {
+      "date": "2026-06-10",
+      "blood_type": "O-",
+      "predicted_requests": 8.96,
+      "confidence_lower": 6.85,
+      "confidence_upper": 11.07
+    },
+    {
+      "date": "2026-06-11",
+      "blood_type": "O-",
+      "predicted_requests": 8.36,
+      "confidence_lower": 6.39,
+      "confidence_upper": 10.33
+    },
+    {
+      "date": "2026-06-12",
+      "blood_type": "O-",
+      "predicted_requests": 7.0,
+      "confidence_lower": 5.04,
+      "confidence_upper": 8.96
+    },
+    {
+      "date": "2026-06-13",
+      "blood_type": "O-",
+      "predicted_requests": 6.52,
+      "confidence_lower": 4.56,
+      "confidence_upper": 8.48
+    },
+    {
+      "date": "2026-06-14",
+      "blood_type": "O-",
+      "predicted_requests": 5.55,
+      "confidence_lower": 3.59,
+      "confidence_upper": 7.51
+    },
+    {
+      "date": "2026-06-15",
+      "blood_type": "O-",
+      "predicted_requests": 8.35,
+      "confidence_lower": 6.39,
+      "confidence_upper": 10.31
+    },
+    {
+      "date": "2026-06-16",
+      "blood_type": "O-",
+      "predicted_requests": 9.42,
+      "confidence_lower": 7.2,
+      "confidence_upper": 11.64
+    },
+    {
+      "date": "2026-06-17",
+      "blood_type": "O-",
+      "predicted_requests": 9.32,
+      "confidence_lower": 7.13,
+      "confidence_upper": 11.51
+    },
+    {
+      "date": "2026-06-18",
+      "blood_type": "O-",
+      "predicted_requests": 8.44,
+      "confidence_lower": 6.45,
+      "confidence_upper": 10.43
+    },
+    {
+      "date": "2026-06-19",
+      "blood_type": "O-",
+      "predicted_requests": 6.95,
+      "confidence_lower": 4.99,
+      "confidence_upper": 8.91
+    },
+    {
+      "date": "2026-06-20",
+      "blood_type": "O-",
+      "predicted_requests": 6.58,
+      "confidence_lower": 4.62,
+      "confidence_upper": 8.54
+    },
+    {
+      "date": "2026-06-21",
+      "blood_type": "O-",
+      "predicted_requests": 5.45,
+      "confidence_lower": 3.49,
+      "confidence_upper": 7.41
+    },
+    {
+      "date": "2026-06-22",
+      "blood_type": "O-",
+      "predicted_requests": 8.56,
+      "confidence_lower": 6.55,
+      "confidence_upper": 10.57
+    },
+    {
+      "date": "2026-06-23",
+      "blood_type": "O-",
+      "predicted_requests": 9.69,
+      "confidence_lower": 7.41,
+      "confidence_upper": 11.97
+    },
+    {
+      "date": "2026-06-24",
+      "blood_type": "O-",
+      "predicted_requests": 9.53,
+      "confidence_lower": 7.29,
+      "confidence_upper": 11.77
+    },
+    {
+      "date": "2026-06-25",
+      "blood_type": "O-",
+      "predicted_requests": 8.53,
+      "confidence_lower": 6.52,
+      "confidence_upper": 10.54
+    },
+    {
+      "date": "2026-06-26",
+      "blood_type": "O-",
+      "predicted_requests": 6.96,
+      "confidence_lower": 5.0,
+      "confidence_upper": 8.92
+    },
+    {
+      "date": "2026-06-27",
+      "blood_type": "O-",
+      "predicted_requests": 6.58,
+      "confidence_lower": 4.62,
+      "confidence_upper": 8.54
+    },
+    {
+      "date": "2026-06-28",
+      "blood_type": "O-",
+      "predicted_requests": 5.4,
+      "confidence_lower": 3.44,
+      "confidence_upper": 7.36
+    },
+    {
+      "date": "2026-06-29",
+      "blood_type": "O-",
+      "predicted_requests": 8.57,
+      "confidence_lower": 6.55,
+      "confidence_upper": 10.59
+    },
+    {
+      "date": "2026-06-30",
+      "blood_type": "O-",
+      "predicted_requests": 9.74,
+      "confidence_lower": 7.45,
+      "confidence_upper": 12.03
+    },
+    {
+      "date": "2026-07-01",
+      "blood_type": "O-",
+      "predicted_requests": 9.79,
+      "confidence_lower": 7.49,
+      "confidence_upper": 12.09
+    },
+    {
+      "date": "2026-07-02",
+      "blood_type": "O-",
+      "predicted_requests": 8.86,
+      "confidence_lower": 6.78,
+      "confidence_upper": 10.94
+    }
+  ],
+  "weekly_forecasts": [
+    {
+      "date": "2026-06-07",
+      "blood_type": "A+",
+      "predicted_requests": 30.42
+    },
+    {
+      "date": "2026-06-07",
+      "blood_type": "A-",
+      "predicted_requests": 82.35
+    },
+    {
+      "date": "2026-06-07",
+      "blood_type": "AB+",
+      "predicted_requests": 83.0
+    },
+    {
+      "date": "2026-06-07",
+      "blood_type": "AB-",
+      "predicted_requests": 96.31
+    },
+    {
+      "date": "2026-06-07",
+      "blood_type": "B+",
+      "predicted_requests": 94.21000000000001
+    },
+    {
+      "date": "2026-06-07",
+      "blood_type": "B-",
+      "predicted_requests": 32.65
+    },
+    {
+      "date": "2026-06-07",
+      "blood_type": "O+",
+      "predicted_requests": 28.66
+    },
+    {
+      "date": "2026-06-07",
+      "blood_type": "O-",
+      "predicted_requests": 36.83
+    },
+    {
+      "date": "2026-06-14",
+      "blood_type": "A+",
+      "predicted_requests": 42.589999999999996
+    },
+    {
+      "date": "2026-06-14",
+      "blood_type": "A-",
+      "predicted_requests": 115.41
+    },
+    {
+      "date": "2026-06-14",
+      "blood_type": "AB+",
+      "predicted_requests": 114.64
+    },
+    {
+      "date": "2026-06-14",
+      "blood_type": "AB-",
+      "predicted_requests": 133.73
+    },
+    {
+      "date": "2026-06-14",
+      "blood_type": "B+",
+      "predicted_requests": 131.35
+    },
+    {
+      "date": "2026-06-14",
+      "blood_type": "B-",
+      "predicted_requests": 46.39
+    },
+    {
+      "date": "2026-06-14",
+      "blood_type": "O+",
+      "predicted_requests": 42.34
+    },
+    {
+      "date": "2026-06-14",
+      "blood_type": "O-",
+      "predicted_requests": 52.66
+    },
+    {
+      "date": "2026-06-21",
+      "blood_type": "A+",
+      "predicted_requests": 43.86
+    },
+    {
+      "date": "2026-06-21",
+      "blood_type": "A-",
+      "predicted_requests": 114.71
+    },
+    {
+      "date": "2026-06-21",
+      "blood_type": "AB+",
+      "predicted_requests": 114.28999999999999
+    },
+    {
+      "date": "2026-06-21",
+      "blood_type": "AB-",
+      "predicted_requests": 133.01999999999998
+    },
+    {
+      "date": "2026-06-21",
+      "blood_type": "B+",
+      "predicted_requests": 130.04
+    },
+    {
+      "date": "2026-06-21",
+      "blood_type": "B-",
+      "predicted_requests": 47.88
+    },
+    {
+      "date": "2026-06-21",
+      "blood_type": "O+",
+      "predicted_requests": 44.18
+    },
+    {
+      "date": "2026-06-21",
+      "blood_type": "O-",
+      "predicted_requests": 54.51
+    },
+    {
+      "date": "2026-06-28",
+      "blood_type": "A+",
+      "predicted_requests": 44.13
+    },
+    {
+      "date": "2026-06-28",
+      "blood_type": "A-",
+      "predicted_requests": 113.09
+    },
+    {
+      "date": "2026-06-28",
+      "blood_type": "AB+",
+      "predicted_requests": 113.02
+    },
+    {
+      "date": "2026-06-28",
+      "blood_type": "AB-",
+      "predicted_requests": 131.35
+    },
+    {
+      "date": "2026-06-28",
+      "blood_type": "B+",
+      "predicted_requests": 128.03
+    },
+    {
+      "date": "2026-06-28",
+      "blood_type": "B-",
+      "predicted_requests": 48.36
+    },
+    {
+      "date": "2026-06-28",
+      "blood_type": "O+",
+      "predicted_requests": 45.09
+    },
+    {
+      "date": "2026-06-28",
+      "blood_type": "O-",
+      "predicted_requests": 55.25
+    },
+    {
+      "date": "2026-07-05",
+      "blood_type": "A+",
+      "predicted_requests": 30.380000000000003
+    },
+    {
+      "date": "2026-07-05",
+      "blood_type": "A-",
+      "predicted_requests": 68.97999999999999
+    },
+    {
+      "date": "2026-07-05",
+      "blood_type": "AB+",
+      "predicted_requests": 69.05
+    },
+    {
+      "date": "2026-07-05",
+      "blood_type": "AB-",
+      "predicted_requests": 79.37
+    },
+    {
+      "date": "2026-07-05",
+      "blood_type": "B+",
+      "predicted_requests": 77.33
+    },
+    {
+      "date": "2026-07-05",
+      "blood_type": "B-",
+      "predicted_requests": 32.91
+    },
+    {
+      "date": "2026-07-05",
+      "blood_type": "O+",
+      "predicted_requests": 31.25
+    },
+    {
+      "date": "2026-07-05",
+      "blood_type": "O-",
+      "predicted_requests": 36.96
+    }
+  ],
+  "zone_risk": [
+    {
+      "blood_type": "A+",
+      "avg_daily_need": 6.38,
+      "risk": "MEDIUM"
+    },
+    {
+      "blood_type": "A-",
+      "avg_daily_need": 16.48,
+      "risk": "CRITICAL"
+    },
+    {
+      "blood_type": "AB+",
+      "avg_daily_need": 16.47,
+      "risk": "CRITICAL"
+    },
+    {
+      "blood_type": "AB-",
+      "avg_daily_need": 19.13,
+      "risk": "CRITICAL"
+    },
+    {
+      "blood_type": "B+",
+      "avg_daily_need": 18.7,
+      "risk": "CRITICAL"
+    },
+    {
+      "blood_type": "B-",
+      "avg_daily_need": 6.94,
+      "risk": "MEDIUM"
+    },
+    {
+      "blood_type": "O+",
+      "avg_daily_need": 6.38,
+      "risk": "MEDIUM"
+    },
+    {
+      "blood_type": "O-",
+      "avg_daily_need": 7.87,
+      "risk": "MEDIUM"
+    }
+  ],
+  "graphs": {
+    "actual_vs_predicted": "models/graphs/lr_actual_vs_predicted.png",
+    "forecast_30d": "models/graphs/lr_forecast_30d.png",
+    "residuals": "models/graphs/lr_residuals.png",
+    "coefficients": "models/graphs/lr_coefficients.png"
+  }
+}

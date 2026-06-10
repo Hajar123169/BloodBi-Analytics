@@ -1,8 +1,6 @@
 import { getToken } from "../services/authService";
 
-const API_URL =
-  process.env.EXPO_PUBLIC_API_URL ||
-  "http://192.168.1.15:8081/api";
+const API_URL = "http://10.0.2.2:8082/api";
 
 async function request(path, options = {}) {
   try {
@@ -15,16 +13,13 @@ async function request(path, options = {}) {
     const response = await fetch(url, {
       headers: {
         "Content-Type": "application/json",
-
         ...(token
           ? {
               Authorization: `Bearer ${token}`,
             }
           : {}),
-
         ...(options.headers || {}),
       },
-
       ...options,
     });
 
@@ -72,3 +67,5 @@ export async function apiDelete(path) {
     method: "DELETE",
   });
 }
+
+export { API_URL };
