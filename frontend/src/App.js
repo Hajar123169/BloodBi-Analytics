@@ -4,6 +4,8 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import Predictions from './components/Predictions';
+import AIDashboard from './components/AIDashboard';
+import AIChatCopilot from './components/AIChatCopilot';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import DonorStats from './pages/DonorStats';
@@ -75,6 +77,8 @@ export default function App() {
           <Route path="centers" element={<Centers />} />
            <Route path="matcher" element={<DonorMatcher />} />
             <Route path="predictions" element={<Predictions />} />
+            <Route path="ai" element={<AIDashboard />} />
+            <Route path="ai-copilot" element={<AIChatCopilot />} />
         </Route>
 
         <Route

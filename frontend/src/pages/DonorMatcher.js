@@ -114,28 +114,50 @@ export default function DonorMatcher() {
   }
 
   async function scheduleDonation(donorId) {
-    if (!selectedRequest?.id || !donorId) return;
-
-    setSchedulingId(donorId);
-    setMessage('');
-
-    try {
-      await api.post(
-        `/appointments/from-match?requestId=${selectedRequest.id}&donorId=${donorId}`
-      );
-
-      setMessage(
-        'Rendez-vous planifié avec succès depuis le matching intelligent. Vous pouvez le gérer dans la page Appointments.'
-      );
-    } catch (error) {
-      setMessage(
-        'Impossible de planifier le rendez-vous. Vérifiez que le backend est lancé.'
-      );
-    } finally {
-      setSchedulingId(null);
-    }
+  if (!selectedRequest?.id) {
+    setMessage('Veuillez sélectionner une demande avant de créer un rendez-vous.');
+    return;
   }
 
+  if (!donorId) {
+    setMessage('Donneur invalide. Impossible de créer le rendez-vous.');
+    return;
+  }
+
+  const confirmCreate = window.confirm(
+    'Voulez-vous confirmer la création du rendez-vous pour ce donneur ?'
+  );
+
+  if (!confirmCreate) {
+    setMessage('Création du rendez-vous annulée.');
+    return;
+  }
+
+  setSchedulingId(donorId);
+  setMessage('');
+
+  try {
+    await api.post(
+      `/matching/requests/${selectedRequest.id}/schedule?donorId=${donorId}`
+    );
+
+    setMessage(
+      'Rendez-vous planifié avec succès depuis le matching intelligent. Vous pouvez le gérer dans la page Appointments.'
+    );
+  } catch (error) {
+    console.error('Erreur création rendez-vous:', error);
+
+    setMessage(
+      'Impossible de planifier le rendez-vous. Vérifiez que le backend est lancé.'
+    );
+  } finally {
+    setSchedulingId(null);
+  }
+  }
+function cancelScheduling() {
+  setSchedulingId(null);
+  setMessage('Création du rendez-vous annulée.');
+}
   return (
     <div>
       <h1>Smart Donor Matching</h1>
@@ -352,22 +374,30 @@ export default function DonorMatcher() {
                   </div>
 
                   <div className="match-actions">
-                    <button
-                      type="button"
-                      className="success-btn"
-                      disabled={!selectedRequest?.id || schedulingId === donor.id}
-                      onClick={() => scheduleDonation(donor.id)}
-                    >
-                      <EventAvailableIcon />
-                      {schedulingId === donor.id
-                        ? 'Création...'
-                        : 'Créer rendez-vous'}
-                    </button>
+  <button
+    type="button"
+    className="success-btn"
+    disabled={!selectedRequest?.id || !donor.id || schedulingId === donor.id}
+    onClick={() => scheduleDonation(donor.id)}
+  >
+    <EventAvailableIcon />
+    {schedulingId === donor.id
+      ? 'Création...'
+      : 'Créer rendez-vous'}
+  </button>
 
-                    {!selectedRequest?.id && (
-                      <small>Choisissez une demande pour planifier.</small>
-                    )}
-                  </div>
+  <button
+    type="button"
+    className="secondary-btn"
+    onClick={cancelScheduling}
+  >
+    Annuler
+  </button>
+
+  {!selectedRequest?.id && (
+    <small>Choisissez une demande pour planifier.</small>
+  )}
+</div>
                 </div>
               );
             })}

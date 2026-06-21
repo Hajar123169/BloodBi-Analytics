@@ -22,7 +22,9 @@ const items = [
   { to: '/alerts', label: 'Alerts', icon: <WarningIcon /> },
   { to: '/reports', label: 'Reports', icon: <AssessmentIcon /> },
   { to: '/centers', label: 'Centers', icon: <LocalHospitalIcon /> },
-  { to: '/predictions', label: 'Prédictions IA', icon: <AssessmentIcon /> }
+  { to: '/predictions', label: 'Prédictions IA', icon: <AssessmentIcon /> },
+  { to: '/ai', label: 'AI Decision', icon: <AssessmentIcon /> },
+  { to: '/ai-copilot', label: 'AI Assistant', icon: <AssessmentIcon /> }
 ];
 
 export default function Sidebar({ onLogout }) {
