@@ -1,4 +1,4 @@
-# BloodBi-Analytics
+
 # BloodBI Analytics
 
 **BloodBI Analytics** est une plateforme open source de gestion et d'aide à la décision pour le don de sang. Le projet centralise les donneurs, les patients, les demandes de sang, les stocks, les rendez-vous, les alertes et les rapports dans une architecture complète composée d'une application web, d'une application mobile, d'un backend REST, d'une base de données MySQL, de vues BI/OLAP et de modules d'intelligence artificielle.
